@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get a Free Quote — Rent a Grandson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rag-forest:#2C4A33; --rag-pine:#1A2E20; --rag-sage:#8BA888;
+  --rag-moss:#6B7B4A; --rag-tan:#D4C5A9; --rag-cream:#F5F1E8;
+  --rag-charcoal:#2E2A24; --rag-gray:#6B6357; --rag-white:#FFFFFF;
+  --rag-forest-10:#EAEFEB; --rag-tan-30:#F2ECE0;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--rag-cream); color:var(--rag-charcoal);
+  font-family:'Source Sans 3','Segoe UI',sans-serif; line-height:1.6;
+}
+.wrap{max-width:720px; margin:0 auto; padding:24px 16px 64px;}
+
+/* Hero */
+.hero{
+  background:var(--rag-forest); border-radius:12px;
+  padding:44px 36px; margin-bottom:28px;
+}
+.eyebrow{
+  font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+  color:var(--rag-sage); margin:0 0 12px;
+}
+.hero h1{
+  font-family:'Bitter',Georgia,serif; font-weight:700; font-size:40px;
+  color:var(--rag-white); margin:0 0 12px; line-height:1.15;
+}
+.hero p{
+  font-size:17px; color:rgba(255,255,255,0.85); margin:0; max-width:520px;
+}
+.hero-inner{display:flex; align-items:center; gap:28px;}
+.hero-logo{
+  flex:0 0 auto; width:120px; height:auto; border-radius:10px; background:var(--rag-white);
+  padding:8px;
+}
+.hero-text{flex:1; min-width:0;}
+@media (max-width:560px){
+  .hero-inner{flex-direction:column; align-items:flex-start; gap:18px;}
+  .hero-logo{width:96px;}
+}
+
+/* Card */
+.card{
+  background:var(--rag-white); border:1px solid #E2DCCF; border-radius:12px;
+  padding:28px; margin-bottom:20px; border-top:4px solid var(--rag-moss);
+}
+.card h2{
+  font-family:'Bitter',Georgia,serif; font-weight:600; font-size:24px;
+  color:var(--rag-pine); margin:0 0 4px;
+}
+.card .sub{font-size:14px; color:var(--rag-gray); margin:0 0 20px;}
+
+/* Fields */
+.field{margin-bottom:18px;}
+.row{display:flex; gap:16px; flex-wrap:wrap;}
+.row .field{flex:1; min-width:160px;}
+label{display:block; font-weight:600; font-size:14px; margin-bottom:6px; color:var(--rag-pine);}
+label .req{color:#B23B3B;}
+input,select,textarea{
+  width:100%; font-family:inherit; font-size:16px; color:var(--rag-charcoal);
+  padding:11px 13px; border:1px solid #CFC8B8; border-radius:8px;
+  background:var(--rag-white); outline:none; transition:border-color .15s,box-shadow .15s;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--rag-moss); box-shadow:0 0 0 3px rgba(107,123,74,0.18);
+}
+textarea{resize:vertical; min-height:96px;}
+.hint{font-size:13px; color:var(--rag-gray); margin-top:5px;}
+
+/* Photo upload */
+.drop{
+  border:2px dashed var(--rag-sage); border-radius:10px; background:var(--rag-forest-10);
+  padding:26px; text-align:center; cursor:pointer; transition:background .15s,border-color .15s;
+}
+.drop:hover{background:#E3EBE2; border-color:var(--rag-moss);}
+.drop strong{color:var(--rag-forest);}
+.drop span{display:block; font-size:13px; color:var(--rag-gray); margin-top:4px;}
+#fileInput{display:none;}
+.thumbs{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;}
+.thumb{position:relative; width:84px; height:84px; border-radius:8px; overflow:hidden; border:1px solid #CFC8B8;}
+.thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+.thumb button{
+  position:absolute; top:3px; right:3px; width:20px; height:20px; border:none;
+  border-radius:50%; background:rgba(26,46,32,0.85); color:#fff; cursor:pointer;
+  font-size:13px; line-height:1; display:flex; align-items:center; justify-content:center;
+}
+
+/* Buttons & status */
+.submit{
+  background:var(--rag-forest); color:var(--rag-white); font-family:'Source Sans 3',sans-serif;
+  font-weight:600; font-size:16px; padding:15px 30px; border:none; border-radius:8px;
+  cursor:pointer; width:100%; transition:background .15s;
+}
+.submit:hover{background:var(--rag-pine);}
+.submit:disabled{opacity:.65; cursor:not-allowed;}
+.note{
+  background:var(--rag-tan-30); border-left:4px solid var(--rag-moss); color:var(--rag-charcoal);
+  padding:14px 16px; border-radius:8px; font-size:14px; margin-bottom:20px;
+}
+.status{margin-top:16px; padding:14px 16px; border-radius:8px; font-size:15px; display:none;}
+.status.ok{display:block; background:var(--rag-forest-10); border-left:4px solid var(--rag-forest); color:var(--rag-charcoal);}
+.status.err{display:block; background:#F7E7E5; border-left:4px solid #B23B3B; color:#5a1f1f;}
+.foot{text-align:center; font-size:13px; color:var(--rag-gray); margin-top:24px;}
+.success-panel{display:none; text-align:center; padding:30px 10px;}
+.success-panel h2{font-family:'Bitter',Georgia,serif; color:var(--rag-forest); font-size:28px; margin:0 0 10px;}
+.success-panel p{color:var(--rag-charcoal); margin:0 auto; max-width:440px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <img class="hero-logo" src="https://raw.githubusercontent.com/JustinTrolle/Rent-A-Grandson-/b8b0f7c694cdb3608786bca554d181febbe215ca/Rent%20a%20Grandson%20-%20Logo.png" alt="Rent a Grandson logo">
+      <div class="hero-text">
+        <p class="eyebrow">Landscaping · Yard Work · Odd Jobs</p>
+        <h1>Get a Free Quote</h1>
+        <p>Tell us a little about the job and we'll get back to you with a fair price. No pressure, and no charge to ask.</p>
+      </div>
+    </div>
+  </div>
+
+  <form id="quoteForm">
+    <div class="note">Fields marked <span style="color:#B23B3B;">*</span> help us give you an accurate quote. The rest just helps us help you faster.</div>
+
+    <!-- Contact -->
+    <div class="card">
+      <h2>Your Contact Info</h2>
+      <p class="sub">So we know who to reach and how.</p>
+      <div class="field">
+        <label>Name <span class="req">*</span></label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Phone <span class="req">*</span></label>
+          <input type="tel" name="phone" required>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Preferred way to reach you</label>
+          <select name="preferredContact">
+            <option value="">No preference</option>
+            <option>Phone call</option>
+            <option>Text message</option>
+            <option>Email</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Best time to reach you</label>
+          <input type="text" name="bestTime" placeholder="e.g. weekday mornings">
+        </div>
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="card">
+      <h2>Where's the Job?</h2>
+      <p class="sub">The address where the work will happen.</p>
+      <div class="note" style="margin-bottom:20px;">Rather not share your exact location for security reasons? No problem — just leave out the street number. The street and city are enough for us to get you a quote.</div>
+      <div class="field">
+        <label>Street Address <span class="req">*</span></label>
+        <input type="text" name="street" required>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>City <span class="req">*</span></label>
+          <input type="text" name="city" required>
+        </div>
+        <div class="field" style="max-width:120px;">
+          <label>State</label>
+          <input type="text" name="state" placeholder="CO">
+        </div>
+        <div class="field" style="max-width:140px;">
+          <label>ZIP <span class="req">*</span></label>
+          <input type="text" name="zip" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Job -->
+    <div class="card">
+      <h2>About the Job</h2>
+      <p class="sub">The more you tell us, the better the quote.</p>
+      <div class="field">
+        <label>What kind of work do you need? <span class="req">*</span></label>
+        <select name="serviceType" required>
+          <option value="">Select a service…</option>
+          <option>Mowing</option>
+          <option>Yard cleanup / leaf removal</option>
+          <option>Weeding &amp; bed maintenance</option>
+          <option>Trimming &amp; pruning</option>
+          <option>Mulching / planting</option>
+          <option>Gutter cleaning</option>
+          <option>Hauling / junk removal</option>
+          <option>Light repairs / odd jobs</option>
+          <option>Snow removal</option>
+          <option>Other or job combination (describe below)</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Property / yard size</label>
+          <select name="yardSize">
+            <option value="">Not sure</option>
+            <option>Small (city lot / townhome)</option>
+            <option>Medium (standard suburban yard)</option>
+            <option>Large (half acre+)</option>
+            <option>Very large (acre+)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>How soon do you need it done? <span class="req">*</span></label>
+          <select name="timeline" required>
+            <option value="">Select…</option>
+            <option>As soon as possible</option>
+            <option>This week</option>
+            <option>Within two weeks</option>
+            <option>This month</option>
+            <option>Just planning ahead / flexible</option>
+            <option>Recurring / ongoing service</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Anything about the yard we should know?</label>
+        <input type="text" name="yardDetails" placeholder="e.g. steep slope, dog in the yard, locked gate, overgrown">
+      </div>
+      <div class="field">
+        <label>Describe the job <span class="req">*</span></label>
+        <textarea name="jobDescription" required placeholder="Tell us what you're hoping to get done."></textarea>
+      </div>
+    </div>
+
+    <!-- Photos -->
+    <div class="card">
+      <h2>Add Photos</h2>
+      <p class="sub">A few pictures help us quote accurately without a visit. Snap them right from your phone.</p>
+      <div class="drop" id="dropZone">
+        <strong>Tap or click to add photos</strong>
+        <span>From your camera or your computer — JPG or PNG, up to 10 photos</span>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" multiple capture="environment">
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+
+    <!-- Referral -->
+    <div class="card">
+      <h2>One Last Thing</h2>
+      <p class="sub">Optional — but we'd love to know.</p>
+      <div class="field">
+        <label>How did you hear about us?</label>
+        <select name="referral">
+          <option value="">Select…</option>
+          <option>A neighbor / friend</option>
+          <option>Flyer or door hanger</option>
+          <option>Drove by / saw us working</option>
+          <option>Online search</option>
+          <option>Social media</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="submit" id="submitBtn">Send My Free Quote Request</button>
+    <div class="status" id="status"></div>
+  </form>
+
+  <div class="success-panel" id="successPanel">
+    <h2>Thanks — we've got it!</h2>
+    <p>Your request is in. A friendly face from Rent a Grandson will reach out soon with your free quote. Talk to you shortly!</p>
+  </div>
+
+  <p class="foot">Rent a Grandson · Your friendly neighborhood helper · Free estimates · Locally owned</p>
+</div>
+
+<script>
+// ============================================================
+//  PASTE YOUR APPS SCRIPT WEB APP URL BETWEEN THE QUOTES BELOW
+// ============================================================
+const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+
+const MAX_PHOTOS = 10;
+const MAX_MB = 8;               // per-photo size guard
+let photos = [];                // {fileName, mimeType, data(base64), preview}
+
+const fileInput = document.getElementById('fileInput');
+const dropZone  = document.getElementById('dropZone');
+const thumbs    = document.getElementById('thumbs');
+const form      = document.getElementById('quoteForm');
+const statusBox = document.getElementById('status');
+const submitBtn = document.getElementById('submitBtn');
+
+dropZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', e => handleFiles(e.target.files));
+
+function handleFiles(fileList){
+  for (const file of fileList){
+    if (photos.length >= MAX_PHOTOS){ alert('You can add up to ' + MAX_PHOTOS + ' photos.'); break; }
+    if (!file.type.startsWith('image/')) continue;
+    if (file.size > MAX_MB * 1024 * 1024){ alert(file.name + ' is too large (max ' + MAX_MB + 'MB).'); continue; }
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const base64 = ev.target.result.split(',')[1];
+      const item = { fileName:file.name, mimeType:file.type, data:base64, preview:ev.target.result };
+      photos.push(item);
+      renderThumbs();
+    };
+    reader.readAsDataURL(file);
+  }
+  fileInput.value = '';
+}
+
+function renderThumbs(){
+  thumbs.innerHTML = '';
+  photos.forEach((p, i) => {
+    const d = document.createElement('div');
+    d.className = 'thumb';
+    d.innerHTML = '<img src="'+p.preview+'" alt=""><button type="button" aria-label="Remove">&times;</button>';
+    d.querySelector('button').onclick = () => { photos.splice(i,1); renderThumbs(); };
+    thumbs.appendChild(d);
+  });
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  if (SCRIPT_URL.includes('PASTE_YOUR')){
+    showStatus('err', 'Setup needed: the form isn\u2019t connected to Google yet. Add your Apps Script URL in the code.');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+  showStatus('ok', 'Sending your request…');
+
+  const fd = new FormData(form);
+  const payload = Object.fromEntries(fd.entries());
+  payload.photos = photos.map(p => ({ fileName:p.fileName, mimeType:p.mimeType, data:p.data }));
+
+  try{
+    // text/plain avoids a CORS preflight that Apps Script can't answer
+    await fetch(SCRIPT_URL, {
+      method:'POST',
+      mode:'no-cors',
+      headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+    // no-cors gives an opaque response, so we treat a completed request as success
+    form.style.display = 'none';
+    document.getElementById('successPanel').style.display = 'block';
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }catch(err){
+    showStatus('err', 'Something went wrong sending your request. Please try again, or call us directly.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send My Free Quote Request';
+  }
+});
+
+function showStatus(kind, msg){
+  statusBox.className = 'status ' + kind;
+  statusBox.textContent = msg;
+}
+</script>
+</body>
+</html>

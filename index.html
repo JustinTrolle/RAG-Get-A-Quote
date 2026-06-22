@@ -109,6 +109,21 @@ textarea{resize:vertical; min-height:96px;}
 .status.ok{display:block; background:var(--rag-forest-10); border-left:4px solid var(--rag-forest); color:var(--rag-charcoal);}
 .status.err{display:block; background:#F7E7E5; border-left:4px solid #B23B3B; color:#5a1f1f;}
 .foot{text-align:center; font-size:13px; color:var(--rag-gray); margin-top:24px;}
+
+/* Office use only */
+.office{
+  background:var(--rag-tan-30); border:1px solid #E2DCCF; border-radius:10px;
+  padding:0 18px; margin-bottom:20px;
+}
+.office summary{
+  cursor:pointer; padding:14px 0; font-weight:600; font-size:13px;
+  letter-spacing:1px; text-transform:uppercase; color:var(--rag-gray);
+  list-style:none; outline:none;
+}
+.office summary::-webkit-details-marker{display:none;}
+.office summary::before{content:'▸ '; color:var(--rag-moss);}
+.office[open] summary::before{content:'▾ ';}
+.office[open]{padding-bottom:18px;}
 .success-panel{display:none; text-align:center; padding:30px 10px;}
 .success-panel h2{font-family:'Bitter',Georgia,serif; color:var(--rag-forest); font-size:28px; margin:0 0 10px;}
 .success-panel p{color:var(--rag-charcoal); margin:0 auto; max-width:440px;}
@@ -274,6 +289,16 @@ textarea{resize:vertical; min-height:96px;}
         </select>
       </div>
     </div>
+
+    <!-- Office Use Only -->
+    <details class="office">
+      <summary>Office use only</summary>
+      <div class="field" style="margin-top:16px;">
+        <label>Prepared by (contractor name)</label>
+        <input type="text" name="preparedBy" placeholder="Leave blank if completed by the client">
+        <p class="hint">If a team member filled this out on a client's behalf, enter your name here.</p>
+      </div>
+    </details>
 
     <button type="submit" class="submit" id="submitBtn">Send My Free Quote Request</button>
     <div class="status" id="status"></div>

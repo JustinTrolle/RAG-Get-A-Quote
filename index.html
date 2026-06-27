@@ -314,9 +314,9 @@ textarea{resize:vertical; min-height:96px;}
 
 <script>
 // ============================================================
-//  PASTE YOUR APPS SCRIPT WEB APP URL BETWEEN THE QUOTES BELOW
+//  YOUR APPS SCRIPT WEB APP URL
 // ============================================================
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxcrWIYdHObryO10d78wwVkOjRlIPKOmbEWHCd6a5bW-HZ-Qb8JWh7rhm2vM6n4QiTzzQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXdVdweKGysdcJOgyJl-9N4b0kbQoLc5I8qG94owip4srk4YQcgCzgacblGONyxptEOQ/exec";
 
 const MAX_PHOTOS = 10;
 const MAX_MB = 8;               // per-photo size guard
@@ -362,11 +362,6 @@ function renderThumbs(){
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-
-  if (SCRIPT_URL.includes('PASTE_YOUR')){
-    showStatus('err', 'Setup needed: the form isn\u2019t connected to Google yet. Add your Apps Script URL in the code.');
-    return;
-  }
 
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending…';
